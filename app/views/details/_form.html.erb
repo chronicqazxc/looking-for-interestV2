@@ -1,0 +1,35 @@
+<div class="container-fluid">
+<%= form_for @detail, html: {role: "form"} do |f| %>
+  <div class="form-group">
+    <%= f.label :store_id %>
+    <% if @detail.store_id %>
+      <%= f.text_field :store_id, :value => @detail.store_id, :class => "form-control" %>
+    <% else %>
+      <%= f.text_field :store_id, :value => @store_id, :class => "form-control" %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :icon_url %>
+    <%= f.text_field :icon_url, :class => "form-control" %>
+  </div>  
+  <div class="form-group">
+    <%= f.label :image_url_1 %>
+    <%= f.text_field :image_url_1, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image_url_2 %>
+    <%= f.text_field :image_url_2, :class => "form-control" %>
+  </div>  
+  <div class="form-group">
+    <%= f.label :image_url_3 %>
+    <%= f.text_field :image_url_3, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :web_address %>
+    <%= f.text_field :web_address, :class => "form-control" %>
+  </div>  
+  <div class="form-group">
+    <%= f.submit :submit, :class => "btn btn-success" %>
+  </div>
+<% end %>
+</div>

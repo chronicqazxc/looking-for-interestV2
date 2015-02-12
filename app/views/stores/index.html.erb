@@ -1,0 +1,36 @@
+<div class="panel-heading"><h3>Stores</h3></div>
+<div class="container-fluid">
+<table class="table table-condensed table-hover">
+  <tr>
+  	<th>Name</th>
+    <th>Address</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for store in @stores %>
+    <tr>
+      <td><%= store.name %></td>
+      <td><%= store.address %></td>
+      <td><%= store.latitude %></td>
+      <td><%= store.longitude %></td>
+      <td>
+        <div>
+        <%= link_to "Show", store, :class => "btn btn-primary" %>
+        <%= link_to "Edit", edit_store_path(store), :class => "btn btn-warning"  %>
+        <%= link_to "Destroy", store, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to "Detail", {:controller => "details", :action => "index", :store_id => store.store_id}, :class => "btn btn-info" %>
+        <%= link_to "Comments", {:controller => "comments", :action => "index", :store_id => store.store_id}, :class => "btn btn-default" %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div class="panel-footer">
+	<%= link_to "Add", new_store_path, :class => "btn btn-link" %>
+</div>

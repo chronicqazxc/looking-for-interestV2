@@ -1,0 +1,8 @@
+<div class="panel-heading"><h3><%= "Edit #{get_store_name(@detail.store_id)} Detail" %> </h3></div>
+
+<%= render 'form' %>
+
+<div class="panel-footer">
+  <%= link_to "Back to List", {:controller => "details", :action => "index", :store_id => @detail.store_id}, :class => "btn btn-link" %> |
+  <%= link_to "Show", @detail, :class => "btn btn-link" %>
+</div>

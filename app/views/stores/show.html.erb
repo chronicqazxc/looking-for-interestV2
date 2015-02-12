@@ -1,0 +1,36 @@
+<div class="panel-heading"><h3><%= @store.name %></h3></div>
+<div class="container-fluid">
+	<table class="table">
+  	<tr>
+  		<th>Name</th>
+		<td><%= @store.name %></td>
+  	</tr>
+  	<tr>
+  		<th>Major Type</th>
+  		<td><%= get_major_type_desc(@store.major_type_id) %></td>
+  	</tr>
+  	<tr>
+  		<th>Minor Type</th>
+  		<td><%= get_minor_type_desc(@store.major_type_id, @store.minor_type_id) %></td>
+  	</tr>        
+    <tr>
+      <th>Phone</th>
+      <td><%= @store.phone_number %></td>
+    </tr>				
+	  <tr>
+   		<th>Address</th>
+		  <td><%= @store.address %></td>
+	  </tr>
+	  <tr>
+		  <th>Map</th>
+		  <td>
+		  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@store.latitude}%2C#{@store.longitude}" %>			
+		  </td>
+	  </tr>
+	</table>
+</div>	
+<div class="panel-footer">
+  		<%= link_to "Back to List", stores_path, :class => "btn btn-link" %> |
+  		<%= link_to "Edit", edit_store_path(@store), :class => "btn btn-link" %> 
+</div>
+

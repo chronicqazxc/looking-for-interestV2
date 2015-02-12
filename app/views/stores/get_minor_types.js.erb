@@ -1,0 +1,6 @@
+// alert("<%=j raw @last_store.to_json %>");
+// $('#store_minor_type_id').html('<%=j options_from_collection_for_select(@minor_types, :type_id, :type_description) %>');
+$('#store_minor_type_id').html('<%=j options_for_select(@minor_type_arr) %>');
+$('#store_id_part1').replaceWith('<%= text_field_tag "store_id_part1", @store_id_part1.type_id, :class => "form-control", :disabled => "true" %>');
+$('#store_id_part2').replaceWith('<%= text_field_tag "store_id_part2", @store_id_part2.type_id, :class => "form-control", :disabled => "true" %>');
+$('#last_store_id').replaceWith('<p id="last_store_id">last store id: <%= @last_store_id %></p>');

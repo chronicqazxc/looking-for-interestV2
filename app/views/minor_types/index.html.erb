@@ -1,0 +1,31 @@
+<div class="panel-heading"><h3>All Minor Types</h3></div>
+<div class="container-fluid">
+<table class="table table-condensed table-hover">
+  <tr>
+  	<th>Type ID</th>
+    <th>Type Description</th>
+    <th>Major Type ID</th>
+    <th>Major Type Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for minor_type in @minor_types %>
+    <tr>
+      <td><%= minor_type.type_id %></td>	
+      <td><%= minor_type.type_description %></td>
+      <td><%= minor_type.major_type_id %></td>
+      <td><%= get_major_type_desc(minor_type.major_type_id) %></td>
+      <td><div>
+        <%= link_to "Show", minor_type, :class => "btn btn-primary" %>
+        <%= link_to "Edit", edit_minor_type_path(minor_type), :class => "btn btn-warning"  %>
+        <%= link_to "Destroy", minor_type, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
+      </div></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div class="panel-footer">
+      <%= link_to "Back", {:controller => "manage", :action => "index"}, :class => "btn btn-link" %> |
+      <%= link_to "Add", new_minor_type_path, :class => "btn btn-link" %>
+</div>

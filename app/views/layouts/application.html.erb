@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LookingForInterest</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render :partial => "layouts/flash_message" %>
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-xs-2 col-sm-2 col-md-9"></div>
+      <div class="col-xs-2 col-sm-2 col-md-3">
+        <button type="button" class="btn btn-link">Login</button>
+        <button type="button" class="btn btn-link">Register</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="jumbotron">
+        <h1>Looking for interest</h1>
+      </div>    
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-sm-2 col-md-2">
+        <%= render :partial => "layouts/menu" %>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-10">
+        <div class="panel panel-default">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-12">
+        <%= render :partial => "layouts/footer" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-12">
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<div class="container-fluid">
+<%= form_for @store, html: {role: "form"} do |f| %>
+<p id="last_store_id"><%= "last store id: #{get_last_store_id_by_major_and_minor(MajorType.first, get_first_minor_by_major(MajorType.first))}" %></p>
+<table class="table">
+  <tr>
+    <th><%= f.label :major_type_id %></th>
+    <th><%= f.label :minor_type_id %></th>
+  <tr>
+  <tr>
+    <td>
+      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:type_id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
+    </td>
+    <td>
+      <% if MajorType.first %>
+        <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.type_id),:type_id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<% if false %>
+  <div class="form-group">
+    <%= f.label :major_type_id %>
+    <div class="dropdown">      
+      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:type_id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types'}} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :minor_type_id %>
+    <div class="dropdown" >
+      <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.type_id),:type_id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle'} %>
+    </div>
+  </div>
+<% end %>  
+
+  <div class="form-inline">
+    <%= f.label :store_id %></br>
+    <% if @store_id_part1 && @store_id_part2 %>
+    <%= text_field_tag "store_id_part1", @store_id_part1.type_id, :class => "form-control", :disabled => "true" %>
+    <%= text_field_tag "store_id_part2", @store_id_part2.type_id, :class => "form-control", :disabled => "true" %>
+    <% end %>
+    <%= f.text_field :store_id, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, :class => "form-control" %>
+  </div>  
+  <div class="form-group">
+    <%= f.label :city %>
+    <%= f.text_field :city, :class => "form-control" %>
+  </div>  
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit :submit, :class => "btn btn-success" %>
+  </div>
+<% end %>
+</div>

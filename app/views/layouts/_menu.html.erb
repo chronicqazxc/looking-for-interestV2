@@ -1,0 +1,15 @@
+          <div class="list-group">
+         <%= link_to "Home",
+              {:controller => "welcome",
+              :action => "index"},
+              :class => "list-group-item" %>
+         <%= link_to "Stores",
+              {:controller => "stores",
+              :action => "index"},
+              :class => "list-group-item" %>
+         <%= link_to "Manage",
+              {:controller => "manage",
+              :action => "index"},
+              :class => "list-group-item" %>
+          </div>
+        

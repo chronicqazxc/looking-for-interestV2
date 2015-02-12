@@ -1,0 +1,30 @@
+<div class="panel-heading"><h3><%= "#{get_store_name(@comment.store_id)} Detail" %></h3></div>
+<div class="container-fluid">
+	<table class="table">
+  	<tr>
+  		<th>Store ID</th>
+		<td><%= @comment.store_id %></td>
+  	</tr>
+    <tr>
+      <th>Guest Name</th>
+      <td><%= @comment.guest_name %></td>
+    </tr>
+    <tr>
+      <th>Comment Date</th>
+      <td><%= @comment.created_at %></td>
+    </tr>    
+    <tr>
+      <th>Rate</th>
+      <td><%= @comment.rate %></td>
+    </tr>
+  	<tr>
+  		<th>Content</th>
+  		<td><%= @comment.content %></td>
+  	</tr>
+	</table>
+</div>	
+<div class="panel-footer">
+  		<%= link_to "Back to List", {:controller => "comments", :action => "index", :store_id => @comment.store_id}, :class => "btn btn-link" %> |
+  		<%= link_to "Edit", edit_comment_path(@comment), :class => "btn btn-link" %> 
+</div>
+

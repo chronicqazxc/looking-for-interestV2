@@ -1,0 +1,36 @@
+<div class="panel-heading"><h3>Comments of <%= get_store_name(@store_id) %></h3></div>
+<div class="container-fluid">
+<table class="table table-condensed table-hover">
+  <tr>
+  	<th>Store ID</th>
+    <th>Guest Name</th>
+    <th>Rate</th>
+    <th>Content</th>
+    <th>Date Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for comment in @comments %>
+    <tr>
+      <td><%= comment.store_id %></td>
+      <td><%= comment.guest_name %></td>
+      <td><%= comment.rate %></td>
+      <td><%= comment.content %></td>
+      <td><%= comment.created_at %></td>
+      <td><div>
+        <%= link_to "Show", comment, :class => "btn btn-primary" %>
+        <%= link_to "Edit", edit_comment_path(comment), :class => "btn btn-warning" %>
+        <%= link_to "Destroy", comment, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
+      </div></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+<div class="panel-footer">
+      <%= link_to "Back",
+              {:controller => "stores",
+              :action => "index"},
+              :class => "btn btn-link" %> |
+      <%= link_to "Add", {:controller => "comments", :action => "new", :store_id => @store_id} , :class => "btn btn-link"%>
+</div>

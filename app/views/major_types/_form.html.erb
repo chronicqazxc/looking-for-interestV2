@@ -1,0 +1,16 @@
+<div class="container-fluid">
+<%= form_for @major_type, html: {role: "form"} do |f| %>
+  <p><%= "Last Major Type ID: #{ if MajorType.last; MajorType.last.type_id; else; ""; end; }" %></p>
+  <div class="form-group">
+    <%= f.label :type_id %>
+    <%= f.text_field :type_id, :class => "form-control"  %>
+  </div>
+  <div class="form-group">  
+    <%= f.label :type_description %>
+    <%= f.text_field :type_description, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+  	<%= f.submit :submit, :class => "btn btn-success" %>
+  </div>
+<% end %>
+</div>
