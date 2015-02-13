@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   post 'minor_types/get_minor_types'
   post 'minor_types/get_last_minor_type'
   post 'stores/get_stores'
-  get 'session/login'
+  get 'session/welcome'
+  post 'session/login'
+  get 'session/register'
+  get 'session/logout'
+  post 'users/user_register'
+  get 'users/register'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,17 @@
+<div class="panel-heading"><h3>Login</h3></div>
+<div class="container-fluid">
+<%= form_for :session, :url => {:controller => 'session', :action => 'login'}, html: {role: "form"} do |f| %>
+  <div class="form-group">  
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => "form-control" %>
+  </div>
+  <div class="form-group">  
+    <%= f.label :password_digest %>
+    <%= f.text_field :password_digest, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+  	<%= f.submit :submit, :class => "btn btn-success" %>
+  </div>
+<% end %>
+</div>
+<div class="panel-footer"></div>

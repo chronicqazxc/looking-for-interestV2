@@ -11,10 +11,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def register
+    @user = User.new
+  end
+
+  def user_register
     # render :plain => params
     @user = User.new(user_type_params)
     if @user.save
+      sign_in(@user)
       redirect_to @user , :flash => { :success => "Successfully created major_type." } #:notice => "Successfully created major_type."
     else
       render :action => 'new'
