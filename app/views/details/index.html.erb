@@ -1,5 +1,5 @@
 <div class="panel-heading"><h3><%= "#{get_store_name(@store_id)} Detail" %></h3></div>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
   <table class="table table-condensed table-hover">
     <tr>
       <th>Total Rates Count</th>
@@ -11,6 +11,12 @@
       <th>Average rate</th>
       <% if @detail %>
         <td><%= get_average_rate(@detail.store_id) %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <th>Icon URL</th>
+      <% if @detail %>
+        <td><%= @detail.icon_url %></td>
       <% end %>
     </tr>
     <tr>
@@ -31,12 +37,18 @@
         <td><%= @detail.image_url_3 %></td>
       <% end %>
     </tr>
+    <tr>
+      <th>Web site</th>
+      <% if @detail %>
+        <td><%= @detail.web_address %></td>
+      <% end %>
+    </tr>
   </table>  
-</div>
+<!-- </div> -->
 <div class="panel-footer">
   <% if @detail %>
     <%= link_to "Show", @detail, :class => "btn btn-primary" %> 
-    <%= link_to "Edit", edit_detail_path(@detail), :class => "btn btn-warning" %> 
+    <%= link_to "Edit", {:controller => "details", :action => "edit", :store_id => @store_id}, :class => "btn btn-warning" %>
     <%= link_to "Destroy", @detail, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
   <% else %>
 	 <%= link_to "Add", {:controller => "details", :action => "new", :store_id => @store_id}, :class => "btn btn-link" %>

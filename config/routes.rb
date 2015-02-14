@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'session/logout'
   post 'users/user_register'
   get 'users/register'
+  get 'details/edit'
+  get 'comments/edit'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

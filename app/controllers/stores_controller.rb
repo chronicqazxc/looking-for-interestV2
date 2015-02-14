@@ -51,8 +51,6 @@ class StoresController < ApplicationController
 
   def destroy
     @store = Store.find(params[:id])
-    destroy_comments_by_store(@store.store_id)
-    destroy_detail_by_store(@store.store_id)
     @store.destroy
     redirect_to stores_url, :notice => "Successfully destroyed store."
   end

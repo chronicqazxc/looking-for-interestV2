@@ -1,5 +1,5 @@
 <div class="panel-heading"><h3><%= "#{get_store_name(@comment.store_id)} Detail" %></h3></div>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 	<table class="table">
   	<tr>
   		<th>Store ID</th>
@@ -22,9 +22,9 @@
   		<td><%= @comment.content %></td>
   	</tr>
 	</table>
-</div>	
+<!-- </div>	 -->
 <div class="panel-footer">
   		<%= link_to "Back to List", {:controller => "comments", :action => "index", :store_id => @comment.store_id}, :class => "btn btn-link" %> |
-  		<%= link_to "Edit", edit_comment_path(@comment), :class => "btn btn-link" %> 
+      <%= link_to "Edit", {:controller => "comments", :action => "edit", :store_id => @comment.store_id, :id => @comment.id}, :class => "btn btn-link" %>      
 </div>
 

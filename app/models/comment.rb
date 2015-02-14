@@ -1,3 +1,3 @@
 class Comment < ActiveRecord::Base
-	belongs_to :store, dependent: :destroy
+	belongs_to :store
 end

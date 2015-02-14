@@ -1,26 +1,26 @@
 <div class="panel-heading"><h3>All Major Types</h3></div>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 <table class="table table-condensed table-hover">
   <tr>
   	<th>Type ID</th>
     <th>Type Description</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
   <% for major_type in @major_types %>
     <tr>
       <td><%= major_type.id %></td>
       <td><%= major_type.type_description %></td>
-      <td><div>
-        <%= link_to "Show", major_type, :class => "btn btn-primary" %>
-        <%= link_to "Edit", edit_major_type_path(major_type), :class => "btn btn-warning" %>
-        <%= link_to "Destroy", major_type, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
-      </div></td>
+      <td>
+        <div>
+          <%= link_to "Show", major_type, :class => "btn btn-primary" %>
+          <%= link_to "Edit", edit_major_type_path(major_type), :class => "btn btn-warning" %>
+          <%= link_to "Destroy", major_type, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </td>
     </tr>
   <% end %>
 </table>
-</div>
+<!-- </div> -->
 <div class="panel-footer">
       <%= link_to "Back", {:controller => "manage", :action => "index"} , :class => "btn btn-link"%> |
       <%= link_to "Add", new_major_type_path , :class => "btn btn-link"%>

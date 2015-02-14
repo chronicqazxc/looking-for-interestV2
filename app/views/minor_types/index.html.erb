@@ -1,13 +1,11 @@
 <div class="panel-heading"><h3>All Minor Types</h3></div>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 <table class="table table-condensed table-hover">
   <tr>
   	<th>Type ID</th>
     <th>Type Description</th>
     <th>Major Type ID</th>
     <th>Major Type Description</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
   <% for minor_type in @minor_types %>
@@ -24,7 +22,7 @@
     </tr>
   <% end %>
 </table>
-</div>
+<!-- </div> -->
 <div class="panel-footer">
       <%= link_to "Back", {:controller => "manage", :action => "index"}, :class => "btn btn-link" %> |
       <%= link_to "Add", new_minor_type_path, :class => "btn btn-link" %>

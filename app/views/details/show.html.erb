@@ -1,10 +1,14 @@
 <div class="panel-heading"><h3><%= "#{get_store_name(@detail.store_id)} Detail" %></h3></div>
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 	<table class="table">
   	<tr>
   		<th>Store ID</th>
 		<td><%= @detail.store_id %></td>
   	</tr>
+    <tr>
+      <th>Icon URL </th>
+      <td><%= @detail.icon_url %></td>
+    </tr>
   	<tr>
   		<th>Image URL 1</th>
   		<td><%= @detail.image_url_1 %></td>
@@ -16,19 +20,23 @@
   	<tr>
   		<th>Image URL 3</th>
   		<td><%= @detail.image_url_3 %></td>
-  	</tr>				
-	<tr>
-   	  	<th>Average Rage</th>
+  	</tr>        
+    <tr>
+      <th>Web site</th>
+    <td><%= @detail.web_address %></td>
+    </tr>
+	  <tr>
+   	  <th>Average Rage</th>
 		<td><%= @detail.average_rate %></td>
-	</tr>				
-	<tr>
-   	  	<th>Total Rage</th>
-		<td><%= @detail.total_rate %></td>
-	</tr>
+	  </tr>
+	  <tr>
+   	  <th>Total Rage</th>
+		  <td><%= @detail.total_rate %></td>
+	  </tr>
 	</table>
-</div>	
+<!-- </div>	 -->
 <div class="panel-footer">
   		<%= link_to "Back to List", {:controller => "details", :action => "index", :store_id => @detail.store_id}, :class => "btn btn-link" %> |
-  		<%= link_to "Edit", edit_detail_path(@detail), :class => "btn btn-link" %> 
+      <%= link_to "Edit", {:controller => "details", :action => "edit", :store_id => @detail.id}, :class => "btn btn-link" %>
 </div>
 

@@ -26,7 +26,9 @@ class DetailsController < ApplicationController
   end
 
   def edit
-    @detail = Detail.find(params[:id])
+    # render :plain => params
+    @detail = Detail.find(params[:store_id])
+    @store_id = params[:store_id]
   end
 
   def update
@@ -46,6 +48,6 @@ class DetailsController < ApplicationController
 
   private  
   def detail_params
-    params.require(:detail).permit(:store_id, :image_url_1, :image_url_2, :image_url_3, :web_address, :open_time, :introduction)
+    params.require(:detail).permit(:store_id, :icon_url, :image_url_1, :image_url_2, :image_url_3, :web_address, :open_time, :introduction)
   end  
 end

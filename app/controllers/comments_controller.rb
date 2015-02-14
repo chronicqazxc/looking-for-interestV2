@@ -23,10 +23,12 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @store_id = params[:store_id]
   end
 
   def edit
     @comment = Comment.find(params[:id])
+    @store_id = params[:store_id]
   end
 
   def update
