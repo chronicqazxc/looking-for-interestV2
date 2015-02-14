@@ -23,8 +23,8 @@
         <%= link_to "Show", store, :class => "btn btn-primary" %>
         <%= link_to "Edit", edit_store_path(store), :class => "btn btn-warning"  %>
         <%= link_to "Destroy", store, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
-        <%= link_to "Detail", {:controller => "details", :action => "index", :store_id => store.store_id}, :class => "btn btn-info" %>
-        <%= link_to "Comments", {:controller => "comments", :action => "index", :store_id => store.store_id}, :class => "btn btn-default" %>
+        <%= link_to "Detail", {:controller => "details", :action => "index", :store_id => store.id}, :class => "btn btn-info" %>
+        <%= link_to "Comments", {:controller => "comments", :action => "index", :store_id => store.id}, :class => "btn btn-default" %>
         </div>
       </td>
     </tr>

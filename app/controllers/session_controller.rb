@@ -1,5 +1,8 @@
 class SessionController < ApplicationController
   def welcome
+    # if session[:session_token]
+    #   redirect_to root_path 
+    # end
   end
 
   def register
@@ -7,11 +10,11 @@ class SessionController < ApplicationController
   end
 
   def login
-    if @user = User.find_by(email: params[:session][:email]).try(:authenticate, params[:session][:password_digest])    
+    if @user = User.find_by(email: params[:session][:email]).try(:authenticate, params[:session][:password_digest])
       sign_in(@user)
       redirect_to root_path
     else
-      render :plain => params
+      render :action => "welcome", :note => "Login faild"
     end
   end
 

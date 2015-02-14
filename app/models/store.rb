@@ -1,4 +1,8 @@
 class Store < ActiveRecord::Base
+	belongs_to :major_type
+	belongs_to :minor_type
+	has_one :detail, dependent: :destroy
+	has_many :comments, dependent: :destroy
 	geocoded_by :address
 	after_validation :geocode, :if => :address_changed?
 end

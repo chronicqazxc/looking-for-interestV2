@@ -14,16 +14,17 @@
 ActiveRecord::Schema.define(version: 20150212154910) do
 
   create_table "comments", force: :cascade do |t|
-    t.string   "store_id"
     t.integer  "rate"
     t.text     "content"
     t.string   "guest_name"
+    t.integer  "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "comments", ["store_id"], name: "index_comments_on_store_id"
+
   create_table "details", force: :cascade do |t|
-    t.string   "store_id"
     t.string   "open_time"
     t.text     "introduction"
     t.string   "icon_url"
@@ -33,38 +34,43 @@ ActiveRecord::Schema.define(version: 20150212154910) do
     t.string   "web_address"
     t.integer  "total_rate"
     t.float    "average_rate"
+    t.integer  "store_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
+  add_index "details", ["store_id"], name: "index_details_on_store_id"
+
   create_table "major_types", force: :cascade do |t|
-    t.string   "type_id"
     t.text     "type_description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
   create_table "minor_types", force: :cascade do |t|
-    t.string   "type_id"
     t.text     "type_description"
-    t.string   "major_type_id"
+    t.integer  "major_type_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
+  add_index "minor_types", ["major_type_id"], name: "index_minor_types_on_major_type_id"
+
   create_table "stores", force: :cascade do |t|
-    t.string   "store_id"
     t.string   "name"
     t.string   "phone_number"
     t.string   "city"
     t.text     "address"
-    t.string   "major_type_id"
-    t.string   "minor_type_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "major_type_id"
+    t.integer  "minor_type_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  add_index "stores", ["major_type_id"], name: "index_stores_on_major_type_id"
+  add_index "stores", ["minor_type_id"], name: "index_stores_on_minor_type_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

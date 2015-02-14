@@ -49,6 +49,6 @@ class MajorTypesController < ApplicationController
 
   private  
   def major_type_params
-    params.require(:major_type).permit(:type_id, :type_description)
+    params.require(:major_type).permit(:type_description)
   end  
 end

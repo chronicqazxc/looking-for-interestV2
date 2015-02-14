@@ -68,7 +68,7 @@ class MinorTypesController < ApplicationController
     major_types = MajorType.all
     @major_arr = []
     major_types.each do |major_type|
-      @major_arr.push([major_type.type_description, major_type.type_id])
+      @major_arr.push([major_type.type_description, major_type.id])
     end
   end  
 end

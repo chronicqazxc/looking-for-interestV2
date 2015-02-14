@@ -1,7 +1,6 @@
 class CreateDetails < ActiveRecord::Migration
   def change
     create_table :details do |t|
-      t.string :store_id
       t.string :open_time
       t.text :introduction
       t.string :icon_url
@@ -12,6 +11,8 @@ class CreateDetails < ActiveRecord::Migration
       t.integer :total_rate
       t.float :average_rate
       
+      t.belongs_to :store, index: true
+
       t.timestamps null: false
     end
   end

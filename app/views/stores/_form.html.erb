@@ -8,11 +8,11 @@
   <tr>
   <tr>
     <td>
-      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:type_id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
+      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
     </td>
     <td>
       <% if MajorType.first %>
-        <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.type_id),:type_id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
+        <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.id),:id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
       <% end %>
     </td>
   </tr>
@@ -22,14 +22,14 @@
   <div class="form-group">
     <%= f.label :major_type_id %>
     <div class="dropdown">      
-      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:type_id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types'}} %>
+      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types'}} %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :minor_type_id %>
     <div class="dropdown" >
-      <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.type_id),:type_id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle'} %>
+      <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.id),:id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle'} %>
     </div>
   </div>
 <% end %>  
@@ -37,10 +37,10 @@
   <div class="form-inline">
     <%= f.label :store_id %></br>
     <% if @store_id_part1 && @store_id_part2 %>
-    <%= text_field_tag "store_id_part1", @store_id_part1.type_id, :class => "form-control", :disabled => "true" %>
-    <%= text_field_tag "store_id_part2", @store_id_part2.type_id, :class => "form-control", :disabled => "true" %>
+    <%= text_field_tag "store_id_part1", @store_id_part1.id, :class => "form-control", :disabled => "true" %>
+    <%= text_field_tag "store_id_part2", @store_id_part2.id, :class => "form-control", :disabled => "true" %>
     <% end %>
-    <%= f.text_field :store_id, :class => "form-control" %>
+    <%= f.text_field :id, :class => "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :name %>

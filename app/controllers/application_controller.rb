@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
 
   def get_user
   	if session[:session_token]
-  		@u = User.find_by_session_token(session[:session_token])
+      if User.find_by_session_token(session[:session_token])
+        @u = User.find_by_session_token(session[:session_token])
+      else
+        redirect_to :controller => "session", :action => "welcome"
+      end
+  		
   	else
   		redirect_to :controller => "session", :action => "welcome"
   	end

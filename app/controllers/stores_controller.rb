@@ -19,12 +19,12 @@ class StoresController < ApplicationController
     # render plain: store_type_params
 
     params_for_create = store_type_params
-    if params_for_create[:minor_type_id].include? "_"
-      major_type_id = params_for_create[:minor_type_id].split("_").first
-      minor_type_id = params_for_create[:minor_type_id].split("_").last
-      params_for_create[:minor_type_id] = minor_type_id
-    end
-    params_for_create[:store_id] = "#{params_for_create[:major_type_id]}_#{params_for_create[:minor_type_id]}_#{params_for_create[:store_id]}"
+    # if params_for_create[:minor_type_id].include? "_"
+    #   major_type_id = params_for_create[:minor_type_id].split("_").first
+    #   minor_type_id = params_for_create[:minor_type_id].split("_").last
+    #   params_for_create[:minor_type_id] = minor_type_id
+    # end
+    # params_for_create[:store_id] = "#{params_for_create[:major_type_id]}_#{params_for_create[:minor_type_id]}_#{params_for_create[:store_id]}"
     # render plain: params_for_create
 
     @store = Store.new(params_for_create)
@@ -117,18 +117,20 @@ class StoresController < ApplicationController
 
   private  
   def store_type_params
-    params.require(:store).permit(:store_id, :name, :phone_number, :address, :major_type_id, :minor_type_id, :latitude, :longitude)
+    params.require(:store).permit(:name, :phone_number, :address, :major_type_id, :minor_type_id, :latitude, :longitude)
   end  
 
   def get_origin_store_id_by_store(store)
-    if !(@store_id_part1 = MajorType.find_by_type_id(store.major_type_id))
+    if store.major_type_id
+      @store_id_part1 = MajorType.find(store.major_type_id)
+    else
       @store_id_part1 = MajorType.first
     end
 
-    if !(@store_id_part2 = MinorType.find_by_type_id(store.minor_type_id))
-      if (@store_id_part1)
-        @store_id_part2 = MinorType.find_by_major_type_id(@store_id_part1.type_id)
-      end
+    if store.minor_type_id
+      @store_id_part2 = MinorType.find(store.minor_type_id)
+    else
+      @store_id_part2 = MinorType.find_by_major_type_id(@store_id_part1.id)
     end
   end  
 end
