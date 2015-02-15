@@ -48,6 +48,6 @@ class DetailsController < ApplicationController
 
   private  
   def detail_params
-    params.require(:detail).permit(:store_id, :icon_url, :image_url_1, :image_url_2, :image_url_3, :web_address, :open_time, :introduction)
+    params.require(:detail).permit(:store_id, :icon_url, :image_url_1, :image_url_2, :image_url_3, :web_address, :open_time, :introduction, :other_info_1, :other_info_2, :other_info_3, :other_info_4, :other_info_5)
   end  
 end

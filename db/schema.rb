@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20150212154910) do
     t.string   "web_address"
     t.integer  "total_rate"
     t.float    "average_rate"
+    t.string   "other_info_1"
+    t.string   "other_info_2"
+    t.string   "other_info_3"
+    t.string   "other_info_4"
+    t.string   "other_info_5"
     t.integer  "store_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

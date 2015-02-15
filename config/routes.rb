@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stores/menu'
   post 'stores/get_minor_types'
   post 'stores/change_minor_type'
   post 'stores/get_locations'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   get 'users/register'
   get 'details/edit'
   get 'comments/edit'
+  get 'parse_json/transfor_address'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

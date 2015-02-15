@@ -61,7 +61,7 @@ class MinorTypesController < ApplicationController
 
   private  
   def minor_type_params
-    params.require(:minor_type).permit(:type_id, :type_description, :major_type_id)
+    params.require(:minor_type).permit(:type_description, :major_type_id)
   end
 
   def generate_major_types

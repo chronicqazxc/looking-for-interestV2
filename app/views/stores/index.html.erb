@@ -1,15 +1,13 @@
 <div class="panel-heading"><h3>Stores</h3></div>
-<!-- <div class="container-fluid"> -->
+<div class="container-fluid">
+
+</div>
 <table class="table table-condensed table-hover">
   <tr>
   	<th>Name</th>
     <th>Address</th>
     <th>Latitude</th>
     <th>Longitude</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
   <% for store in @stores %>
@@ -20,7 +18,7 @@
       <td><%= store.longitude %></td>
       <td>
         <div>
-        <%= link_to "Show", store, :class => "btn btn-primary" %>
+        <%= link_to "Show", {:controller => "stores", :action => "show", :page => @current_page, :id => store.id}, :class => "btn btn-primary" %>
         <%= link_to "Edit", edit_store_path(store), :class => "btn btn-warning"  %>
         <%= link_to "Destroy", store, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
         <%= link_to "Detail", {:controller => "details", :action => "index", :store_id => store.id}, :class => "btn btn-info" %>
@@ -30,7 +28,11 @@
     </tr>
   <% end %>
 </table>
-<!-- </div> -->
+<div class="container-fluid">
+  <%= will_paginate @stores %>
+</div>
 <div class="panel-footer">
-	<%= link_to "Add", new_store_path, :class => "btn btn-link" %>
+	<%= link_to "Back", {:controller => "stores", :action => "menu"}, :class => "btn btn-link" %> |
+  <%= link_to "Add", new_store_path, :class => "btn btn-link" %> 
+
 </div>

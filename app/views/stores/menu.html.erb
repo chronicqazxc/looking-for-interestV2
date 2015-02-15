@@ -1,0 +1,28 @@
+<div class="panel-heading"><h3>Choose Store Type</h3></div>
+<% @store = @stores.first %>
+<%= form_for @store, html: {role: "form"} do |f| %>
+<table class="table">
+  <tr>
+    <th><%= f.label :major_type_id %></th>
+    <th><%= f.label :minor_type_id %></th>
+  <tr>
+  <tr>
+    <td>
+      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
+    </td>
+    <td>
+      <% if MajorType.first %>
+        <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.id),:id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+  	<td id="button">
+		<%= link_to "Go", {:controller => "stores", :action => "index", :major_type_id => @major_type_id.to_s, :minor_type_id => @minor_type_id.to_s }, :class => "btn btn-primary" %>  		
+  	</td>	
+  	<td></td>
+  </tr>
+</table>
+<% end %>
+
+<div class="panel-footer"></div>

@@ -10,6 +10,11 @@ class CreateDetails < ActiveRecord::Migration
       t.string :web_address
       t.integer :total_rate
       t.float :average_rate
+      t.string :other_info_1
+      t.string :other_info_2
+      t.string :other_info_3
+      t.string :other_info_4
+      t.string :other_info_5
       
       t.belongs_to :store, index: true
 
