@@ -8,10 +8,18 @@
   <tr>
   <tr>
     <td>
-      <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
+      <% if @type == "new" %>
+        <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
+      <% else %>
+        <%= f.select :major_type_id, options_from_collection_for_select([MajorType.find(@store.major_type_id)],:id, :type_description, @store.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>      
+      <% end %>
     </td>
     <td>
+      <% if @type == "new" %>
+        <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.id),:id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
+      <% else %>
         <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => @store.major_type_id),:id,:type_description,@store.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
+      <% end %>
     </td>
   </tr>
 </table>

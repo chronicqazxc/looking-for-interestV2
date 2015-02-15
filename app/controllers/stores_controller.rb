@@ -48,13 +48,13 @@ class StoresController < ApplicationController
 
   def new
     @store = Store.new
-    get_origin_store_id_by_store(@store)
+    @type = "new"
     # render plain: @minor_types.to_json
   end
 
   def create
     # render plain: store_type_params
-
+    @type = "create"
     params_for_create = store_type_params
     # if params_for_create[:minor_type_id].include? "_"
     #   major_type_id = params_for_create[:minor_type_id].split("_").first
@@ -74,7 +74,6 @@ class StoresController < ApplicationController
 
   def edit    
     @store = Store.find(params[:id])
-    get_origin_store_id_by_store(@store)
   end
 
   def update
@@ -164,19 +163,5 @@ class StoresController < ApplicationController
   private  
   def store_type_params
     params.require(:store).permit(:name, :phone_number, :address, :major_type_id, :minor_type_id, :latitude, :longitude)
-  end  
-
-  def get_origin_store_id_by_store(store)
-    if store.major_type_id
-      @store_id_part1 = MajorType.find(store.major_type_id)
-    else
-      @store_id_part1 = MajorType.first
-    end
-
-    if store.minor_type_id
-      @store_id_part2 = MinorType.find(store.minor_type_id)
-    else
-      @store_id_part2 = MinorType.find_by_major_type_id(@store_id_part1.id)
-    end
-  end  
+  end   
 end
