@@ -75,7 +75,7 @@ private
       info3 = parameters[:other_info_3]
     end
 
-    info4 = # "負責獸醫"
+    info4 = # "發照日期"
     if parameters[:other_info_4]
       info4 = parameters[:other_info_4]
     end

@@ -11,7 +11,8 @@ class MenusController < ApplicationController
   			 "Store" => stores.first,
   			 "Range" => "0.5",
          "NumberOfRows" => "3" }
-  	render json: data
+  	# render json: data
+    render :plain => "123"
   end
 
   def get_ranges

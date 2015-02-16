@@ -1,0 +1,7 @@
+<% if @u %>
+	<li><%= "Hello, #{@u.name}" %></li>
+    <li><%= link_to "Logout", {:controller => "session", :action => "logout"}%></li>
+<% else %>
+	<li><%= link_to "Login", {:controller => "session", :action => "welcome"}%></li>
+	<li><%= link_to "Register", {:controller => "session", :action => "register"}%></li>
+<% end %>

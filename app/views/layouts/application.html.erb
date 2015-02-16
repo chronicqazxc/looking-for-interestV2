@@ -8,47 +8,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render :partial => "layouts/flash_message" %>
-  <div id="main-container" class="container">
-    <div class="row">
-      <div class="col-xs-2 col-sm-2 col-md-9"></div>
-      <div class="col-xs-2 col-sm-2 col-md-3">
-        <% if @u %>
-        <div><%= "Hello, #{@u.name}" %>
-          <%= link_to "Logout", {:controller => "session", :action => "logout"} , :class => "btn btn-link"%>
-        </div>
-        <% else %>
-          <%= link_to "Login", {:controller => "session", :action => "welcome"} , :class => "btn btn-link"%>        
-          <%= link_to "Register", {:controller => "session", :action => "register"} , :class => "btn btn-link"%>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
+  <header>
+      <%= render :partial => "layouts/nav_items" %>
+  </header>
+  <main role = "main">
+  
+  <div id="main-container" class="container">    
       <div class="jumbotron">
         <h1>Looking for interest</h1>
       </div>    
-    </div>
-    <div class="row">
+      <%= render :partial => "layouts/flash_message" %>  
       <div class="col-xs-2 col-sm-2 col-md-2">
         <%= render :partial => "layouts/menu" %>
       </div>
+
       <div class="col-xs-6 col-sm-6 col-md-10">
         <div class="panel panel-default">
           <%= yield %>
         </div>
       </div>
-    </div>
-    <hr/>
-    <div class="row">
+    
+    
+    
       <div class="col-xs-4 col-sm-4 col-md-12">
         <%= render :partial => "layouts/footer" %>
       </div>
-    </div>
-    <div class="row">
+    
+    
       <div class="col-xs-4 col-sm-4 col-md-12">
         <%= debug(params) if Rails.env.development? %>
       </div>
-    </div>
   </div>
+  </main>
 </body>
 </html>
