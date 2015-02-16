@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212154910) do
+ActiveRecord::Schema.define(version: 20150216024038) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "rate"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20150212154910) do
 
   add_index "minor_types", ["major_type_id"], name: "index_minor_types_on_major_type_id"
 
+  create_table "parse_jsons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "major_type_id"
+    t.integer  "minor_type_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "parse_jsons", ["major_type_id"], name: "index_parse_jsons_on_major_type_id"
+  add_index "parse_jsons", ["minor_type_id"], name: "index_parse_jsons_on_minor_type_id"
+
   create_table "stores", force: :cascade do |t|
     t.string   "name"
     t.string   "phone_number"
@@ -70,12 +82,14 @@ ActiveRecord::Schema.define(version: 20150212154910) do
     t.float    "longitude"
     t.integer  "major_type_id"
     t.integer  "minor_type_id"
+    t.integer  "parse_json_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   add_index "stores", ["major_type_id"], name: "index_stores_on_major_type_id"
   add_index "stores", ["minor_type_id"], name: "index_stores_on_minor_type_id"
+  add_index "stores", ["parse_json_id"], name: "index_stores_on_parse_json_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

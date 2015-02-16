@@ -1,0 +1,26 @@
+<div class="panel-heading"><h3>Import datas</h3></div>
+<!-- <div class="container-fluid"> -->
+<table class="table table-condensed table-hover">
+  <tr>
+  	<th>Name</th>
+    <th>Address</th>
+    <th></th>
+  </tr>
+  <% for parse_json in @parse_jsons %>
+    <tr>
+      <td><%= parse_json.name %></td>
+      <td><%= parse_json.address %></td>
+      <td>
+        <div>
+          <%= link_to "Show", {:controller => "stores", :action => "index", :major_type_id => parse_json.major_type_id, :minor_type_id => parse_json.minor_type_id }, :class => "btn btn-primary" %>
+          <%= link_to "Edit", edit_parse_json_path(parse_json), :class => "btn btn-warning" %>
+          <%= link_to "Destroy", parse_json, :class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<!-- </div> -->
+<div class="panel-footer">
+      <%= link_to "Add", new_parse_json_path , :class => "btn btn-link"%>
+</div>

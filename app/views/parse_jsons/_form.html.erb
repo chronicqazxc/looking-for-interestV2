@@ -1,0 +1,102 @@
+<div class="container-fluid">
+<%= form_for @parse_json, html: {role: "form"} do |f| %>
+  <h4>Choose Major & Minor type</h4>
+  <table class="table">
+    <tr>
+      <th><%= f.label :major_type_id %></th>
+      <th><%= f.label :minor_type_id %></th>
+    </tr>
+    <tr>
+      <td>
+        <%= f.select :major_type_id, options_from_collection_for_select(MajorType.all,:id, :type_description, @parse_json.major_type_id), {}, { :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'get_minor_types', :method => 'post'}} %>
+      </td>
+      <td>
+        <%= f.select :minor_type_id, options_from_collection_for_select(MinorType.where('major_type_id' => MajorType.first.id),:id,:type_description,@parse_json.minor_type_id), {},{ :class => 'btn btn-default dropdown-toggle', :data => {:remote => true, :url => 'change_minor_type', :method => 'post'}} %>
+      </td>
+    </tr>
+  </table>
+
+  <h4>Data Info</h4>
+  <div class="form-group">
+    <%= f.label :name, nil%>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :address, nil%>
+    <%= f.text_field :address, :class => "form-control" %>
+  </div>
+
+  <h4>Parse data mapping</h4>
+  <h5>[Store]</h5>
+  <div class="form-group">
+    <%= label_tag :name%>
+    <%= text_field_tag :name, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :city %>
+    <%= text_field_tag :city, nil, :class => "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :address %>
+    <%= text_field_tag :address, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :phone_number %>
+    <%= text_field_tag :phone_number, nil, :class => "form-control" %>
+  </div>
+
+  <h5>[Detail]</h5>
+  <div class="form-group">
+    <%= label_tag :open_time %>
+    <%= text_field_tag :open_time, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :introduction %>
+    <%= text_field_tag :introduction, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :icon_url %>
+    <%= text_field_tag :icon_url, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :image_url_1 %>
+    <%= text_field_tag :image_url_1, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :image_url_2 %>
+    <%= text_field_tag :image_url_2, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :image_url_3 %>
+    <%= text_field_tag :image_url_3, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :web_address %>
+    <%= text_field_tag :web_address, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :other_info_1 %>
+    <%= text_field_tag :other_info_1, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :other_info_2 %>
+    <%= text_field_tag :other_info_2, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :other_info_3 %>
+    <%= text_field_tag :other_info_3, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :other_info_4 %>
+    <%= text_field_tag :other_info_4, nil, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :other_info_5 %>
+    <%= text_field_tag :other_info_5, nil, :class => "form-control" %>
+  </div>  
+
+  <div class="form-group">
+    <%= f.submit :submit, :class => "btn btn-success" %>
+  </div>
+<% end %>
+</div>    

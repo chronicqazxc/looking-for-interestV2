@@ -13,6 +13,12 @@
 				:class => "btn btn-link" %>		
 		</li>
 		<li class="list-group-item">
+			<%= link_to "Import data",{
+				:controller => "parse_jsons",
+				:action => "index"},
+				:class => "btn btn-link" %>					
+		</li>
+		<li class="list-group-item">
 			<%= link_to "My Info",{
 				:controller => "users",
 				:action => "index"},

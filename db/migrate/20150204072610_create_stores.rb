@@ -10,6 +10,7 @@ class CreateStores < ActiveRecord::Migration
       
       t.belongs_to :major_type, index: true
       t.belongs_to :minor_type, index: true
+      t.belongs_to :parse_json, index: true
 
       t.timestamps null: false
     end

@@ -10,6 +10,9 @@ class StoresController < ApplicationController
         first_minor_type = MinorType.find_by_major_type_id(first_major_type.id)
         @minor_type_id = first_minor_type.id
         @stores = Store.where("major_type_id = ? AND minor_type_id = ?", first_major_type.id, first_minor_type.id).paginate(:page => params[:page])
+        if !(@stores.count > 0)
+          @stores = [Store.new]
+        end
       else
         @minor_type_id = ""
         @stores = Store.where("major_type_id = ?", first_major_type.id)

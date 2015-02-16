@@ -1,11 +1,10 @@
 <div class="container-fluid">
 <%= form_for @store, html: {role: "form"} do |f| %>
-<p id="last_store_id"><%= "last store id: #{get_last_store_id_by_major_and_minor(MajorType.first, get_first_minor_by_major(MajorType.first))}" %></p>
 <table class="table">
   <tr>
     <th><%= f.label :major_type_id %></th>
     <th><%= f.label :minor_type_id %></th>
-  <tr>
+  </tr>
   <tr>
     <td>
       <% if @type == "new" %>

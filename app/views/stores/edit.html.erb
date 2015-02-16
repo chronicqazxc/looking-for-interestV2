@@ -3,6 +3,6 @@
 <%= render 'form' %>
 
 <div class="panel-footer">
-  <%= link_to "Back to List", stores_path, :class => "btn btn-link" %> |
+  <%= link_to "Back to Menu", {:controller => "stores", :action => "menu"}, :class => "btn btn-link" %> |
   <%= link_to "Show", @store, :class => "btn btn-link" %>
 </div>
