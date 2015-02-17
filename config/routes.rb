@@ -3,13 +3,7 @@ Rails.application.routes.draw do
   post 'stores/get_minor_types'
   post 'stores/change_minor_type'
   post 'stores/get_locations'
-  post 'stores/get_stores_from_my_position'
-  post 'menus/get_init_menus'
-  post 'menus/get_ranges'
-  post 'major_types/get_major_types'
-  post 'minor_types/get_minor_types'
   post 'minor_types/get_last_minor_type'
-  post 'stores/get_stores'
   get 'session/welcome'
   post 'session/login'
   get 'session/register'
@@ -83,7 +77,17 @@ Rails.application.routes.draw do
   #   end
 namespace :api do
   namespace :v1  do
-    resources :tokens,:only => [:create, :destroy]
+    resources :tokens,:only => [:index, :create, :destroy]
   end
-end  
+end
+
+  get  'api/v1/tokens/test'
+  post 'api/v1/datas/get_stores'
+  get  'api/v1/datas/menu'
+  post 'api/v1/datas/get_ranges'
+  post 'api/v1/datas/get_init_menus'
+  post 'api/v1/datas/get_stores'
+  post 'api/v1/datas/get_major_types'
+  post 'api/v1/datas/get_minor_types'  
+  post 'api/v1/datas/get_stores_from_my_position'  
 end

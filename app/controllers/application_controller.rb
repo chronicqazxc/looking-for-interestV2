@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include UsersHelper
 
-  before_filter :get_user , :except => [:welcome, :login, :user_register, :register]
+  before_filter :get_user , :except => [:get_stores, 
+                                        :get_init_menus,
+                                        :get_ranges,
+                                        :get_major_types,
+                                        :get_minor_types,
+                                        :get_stores_from_my_position,
+                                        :welcome, :login, :user_register, :register]
 
   def get_user
   	if session[:session_token]

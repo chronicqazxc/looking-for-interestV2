@@ -53,12 +53,6 @@ class MinorTypesController < ApplicationController
   end
   before_action :generate_major_types, only:[:new, :edit]
 
-  skip_before_action :verify_authenticity_token, :only => [:get_minor_types] 
-  def get_minor_types
-    data = MinorType.where('major_type_id' => params[:major_type_id])
-    render json: data
-  end
-
   private  
   def minor_type_params
     params.require(:minor_type).permit(:type_description, :major_type_id)

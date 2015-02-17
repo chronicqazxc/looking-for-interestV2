@@ -41,12 +41,6 @@ class MajorTypesController < ApplicationController
     redirect_to major_types_url, :notice => "Successfully destroyed major_type."
   end
 
-  skip_before_action :verify_authenticity_token, :only => [:get_major_types] 
-  def get_major_types
-    data = MajorType.all
-    render json: data
-  end
-
   private  
   def major_type_params
     params.require(:major_type).permit(:type_description)

@@ -59,13 +59,6 @@ class StoresController < ApplicationController
     # render plain: store_type_params
     @type = "create"
     params_for_create = store_type_params
-    # if params_for_create[:minor_type_id].include? "_"
-    #   major_type_id = params_for_create[:minor_type_id].split("_").first
-    #   minor_type_id = params_for_create[:minor_type_id].split("_").last
-    #   params_for_create[:minor_type_id] = minor_type_id
-    # end
-    # params_for_create[:store_id] = "#{params_for_create[:major_type_id]}_#{params_for_create[:minor_type_id]}_#{params_for_create[:store_id]}"
-    # render plain: params_for_create
 
     @store = Store.new(params_for_create)
     if @store.save
@@ -97,11 +90,6 @@ class StoresController < ApplicationController
 ## ajax methods
 # add & modify form
   def get_minor_types
-    # @params = params
-    #   respond_to do |format|
-    #     format.js {}
-    #   end
-
     store = params[:store]
     @major_type_id = store[:major_type_id]
     
@@ -141,27 +129,7 @@ class StoresController < ApplicationController
         format.js {}
      end
   end
-
-# index
 ##
-
-  skip_before_action :verify_authenticity_token, :only => [:get_locations, :get_stores_from_my_position, :get_stores]
-  def get_locations
-    @locations = Store.all
-    # @location = @location.nearbys(10, :units => :km)   
-    render json: @locations
-  end
-
-  def get_stores_from_my_position
-    stores = Store.where("major_type_id = ? AND minor_type_id = ?", params[:major_type_id], params[:minor_type_id])
-    @stores = stores.near([params[:latitude], params[:longitude]], params[:range], :units => :km)
-    render json: @stores
-  end
-
-  def get_stores
-    stores = Store.where("major_type_id = ? AND minor_type_id = ?", params[:major_type_id], params[:minor_type_id])
-    render json: stores
-  end
 
   private  
   def store_type_params
